@@ -1,54 +1,53 @@
 package com.company;
-
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
-        Scanner wprowadz = new Scanner(System.in);
-        System.out.println("Jakie dzialanie chcesz wykonać?\n" +
-                "Dla dodawania wpisz: plus\n" +
-                "Dla odejmowania wpisz: minus\n" +
-                "Dla mnozenia wpisz: mnoz\n" +
-                "Dla dzielenia wpisz: dziel\n" +
-                "Aby zakończyć wpisz cokolwiek innego");
-        String plus="plus",minus="minus",mnoz="mnoz",dziel="dziel";
-        String dzialanie = wprowadz.nextLine();
-
-        if(dzialanie.equals(plus)){
-            System.out.println("Wprowadz pierwsza cyfre");
-            double x = wprowadz.nextDouble();
-            System.out.println("Wprowadz druga cyfre");
-            double y = wprowadz.nextDouble();
-            Dzialania licz = new Dzialania();
-            System.out.println(licz.dodawanie(x,y));
-        }
-        else if(dzialanie.equals(minus)){
-            System.out.println("Wprowadz pierwsza cyfre");
-            double x = wprowadz.nextDouble();
-            System.out.println("Wprowadz druga cyfre");
-            double y = wprowadz.nextDouble();
-            Dzialania licz = new Dzialania();
-            System.out.println(licz.odejmowanie(x,y));
-        }
-        else if(dzialanie.equals(mnoz)){
-            System.out.println("Wprowadz pierwsza cyfre");
-            double x = wprowadz.nextDouble();
-            System.out.println("Wprowadz druga cyfre");
-            double y = wprowadz.nextDouble();
-            Dzialania licz = new Dzialania();
-            System.out.println(licz.mnozenie(x,y));
-        }
-        else if(dzialanie.equals(dziel)){
-            System.out.println("Wprowadz pierwsza cyfre");
-            double x = wprowadz.nextDouble();
-            System.out.println("Wprowadz druga cyfre");
-            double y = wprowadz.nextDouble();
-            Dzialania licz = new Dzialania();
-            System.out.println(licz.dzielenie(x,y));
-        }
-        else{
-            System.out.println("Dziękujemy za skorzystanie z naszego kalkulatora");
-        }
-
-    }
-}
+		double x, y;
+		char sign;
+		String ver, tak = "TAK";
+		int cer;
+		// definicja zmiennych
+		Scanner wprowadz = new Scanner(System.in);
+		System.out.println("Witamy w naszym kalkulatorze");
+		do {
+			System.out.println("Wprowadź pierwszą cyfrę");
+			x = wprowadz.nextDouble();
+			do {
+				System.out.println("Wprowadź symbol działania +, -, *, /");
+				sign = wprowadz.next().charAt(0);
+				System.out.println("Wprowadź kolejną cyfrę");
+				y = wprowadz.nextDouble();
+				switch (sign) {
+					case '+':
+						System.out.println(x + y);
+						x += y;
+						break;
+					case '-':
+						System.out.println(x - y);
+						x -= y;
+						break;
+					case '*':
+						System.out.println(x * y);
+						x *= y;
+						break;
+					case '/':
+						if (y == 0) {
+							System.out.println("Nie można dzielić przez zero spróbuj wybrać inny dzielnik");
+						} else {
+							System.out.println(x / y);
+							x /= y;
+						}
+						break;
+				}
+				System.out.println("Jeśli chcesz wykonać kolejne działanie wprowadź TAK");
+				ver = wprowadz.nextLine();
+			}
+			while (ver.equals(tak));
+			System.out.println("Jeśli chcesz zaczac od poczatku wprowadź TAK");
+			ver = wprowadz.nextLine();
+		}
+		while (ver.equals(tak));
+	}
+	}
