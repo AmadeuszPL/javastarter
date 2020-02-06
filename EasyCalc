@@ -1,0 +1,54 @@
+package com.company;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner wprowadz = new Scanner(System.in);
+        System.out.println("Jakie dzialanie chcesz wykonać?\n" +
+                "Dla dodawania wpisz: plus\n" +
+                "Dla odejmowania wpisz: minus\n" +
+                "Dla mnozenia wpisz: mnoz\n" +
+                "Dla dzielenia wpisz: dziel\n" +
+                "Aby zakończyć wpisz cokolwiek innego");
+        String plus="plus",minus="minus",mnoz="mnoz",dziel="dziel";
+        String dzialanie = wprowadz.nextLine();
+
+        if(dzialanie.equals(plus)){
+            System.out.println("Wprowadz pierwsza cyfre");
+            double x = wprowadz.nextDouble();
+            System.out.println("Wprowadz druga cyfre");
+            double y = wprowadz.nextDouble();
+            Dzialania licz = new Dzialania();
+            System.out.println(licz.dodawanie(x,y));
+        }
+        else if(dzialanie.equals(minus)){
+            System.out.println("Wprowadz pierwsza cyfre");
+            double x = wprowadz.nextDouble();
+            System.out.println("Wprowadz druga cyfre");
+            double y = wprowadz.nextDouble();
+            Dzialania licz = new Dzialania();
+            System.out.println(licz.odejmowanie(x,y));
+        }
+        else if(dzialanie.equals(mnoz)){
+            System.out.println("Wprowadz pierwsza cyfre");
+            double x = wprowadz.nextDouble();
+            System.out.println("Wprowadz druga cyfre");
+            double y = wprowadz.nextDouble();
+            Dzialania licz = new Dzialania();
+            System.out.println(licz.mnozenie(x,y));
+        }
+        else if(dzialanie.equals(dziel)){
+            System.out.println("Wprowadz pierwsza cyfre");
+            double x = wprowadz.nextDouble();
+            System.out.println("Wprowadz druga cyfre");
+            double y = wprowadz.nextDouble();
+            Dzialania licz = new Dzialania();
+            System.out.println(licz.dzielenie(x,y));
+        }
+        else{
+            System.out.println("Dziękujemy za skorzystanie z naszego kalkulatora");
+        }
+
+    }
+}
