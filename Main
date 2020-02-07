@@ -1,5 +1,6 @@
 package com.company;
 import java.util.Scanner;
+// importuję paczkę ze Scannerem
 
 public class Main {
 	public static double next() {
@@ -13,23 +14,28 @@ public class Main {
 			}
 		}
 	}
+	//metoda do weryfikacji w danej linii czy wpisane dane są zmienną typu double
     public static void main(String[] args) {
 		String vr, tak ="TAK";
 		char sign;
 		double x,y;
 		// definicja zmiennych
 		Scanner wprowadz = new Scanner(System.in);
+		// przywoluje Scanner o nazwie wprowadz
 		Main verify = new Main();
+		//tworzy obiekt verify dla klasy Main
 		System.out.println("Witamy w naszym kalkulatorze\n" +
-				"Wpisz dowolną liczbę aby sprawdzić czy nadaje się do naszego kalkulatora");
+				"Wpisz dowolne znaki aby sprawdzić czy stanowią zmienną typu double");
 		verify.next();
-		//sprawdzenie czy dane nadają sie do kalkulatora
+		//sprawdzenie czy dane nadają sie do kalkulatora (wywołanie metyody next z obiektu verify dla klasy Main)
 		do {
 				System.out.println("Wprowadź pierwszą liczbe");
+
 				while (!wprowadz.hasNextDouble()){
-					System.out.println("To nie jest cyfra!");
+					System.out.println("To nie jest liczba!");
 					wprowadz.next();//wazna formula
 				}
+				// powyzsza funkcja dopilnować, aby dane wprowadzne były takiego typu jak chcemy
 				x = wprowadz.nextDouble();
 
 			do {
@@ -42,7 +48,7 @@ public class Main {
 				while (sign != '+' && sign != '-' && sign != '*' && sign != '/');
 				System.out.println("Wprowadź kolejną liczbe");
 				while (!wprowadz.hasNextDouble()){
-					System.out.println("To nie jest cyfra!");
+					System.out.println("To nie jest liczba!");
 					wprowadz.next();
 				}
 				y = wprowadz.nextDouble();
@@ -68,6 +74,7 @@ public class Main {
 						}
 						break;
 				}
+				// funkcja okreslajaca dzialania dla poszczególnych znaków
 				System.out.println("Jeśli chcesz wykonać kolejne działanie wprowadź TAK");
 				wprowadz.nextLine();
 				vr = wprowadz.nextLine();
