@@ -2,22 +2,49 @@ package com.company;
 import java.util.Scanner;
 
 public class Main {
-
+	public static double next() {
+		while (true) {
+			try {
+				double i;
+				Scanner input = new Scanner(System.in);
+				return i=input.nextDouble();
+			} catch (Exception e) {
+				System.out.println("Invalid input.");
+			}
+		}
+	}
     public static void main(String[] args) {
-		double x, y;
+		String vr, tak ="TAK";
 		char sign;
-		String ver, tak = "TAK";
-		int cer;
+		double x,y;
 		// definicja zmiennych
 		Scanner wprowadz = new Scanner(System.in);
-		System.out.println("Witamy w naszym kalkulatorze");
+		Main verify = new Main();
+		System.out.println("Witamy w naszym kalkulatorze\n" +
+				"Wpisz dowolną liczbę aby sprawdzić czy nadaje się do naszego kalkulatora");
+		verify.next();
+		//sprawdzenie czy dane nadają sie do kalkulatora
 		do {
-			System.out.println("Wprowadź pierwszą cyfrę");
-			x = wprowadz.nextDouble();
+				System.out.println("Wprowadź pierwszą liczbe");
+				while (!wprowadz.hasNextDouble()){
+					System.out.println("To nie jest cyfra!");
+					wprowadz.next();//wazna formula
+				}
+				x = wprowadz.nextDouble();
+
 			do {
 				System.out.println("Wprowadź symbol działania +, -, *, /");
-				sign = wprowadz.next().charAt(0);
-				System.out.println("Wprowadź kolejną cyfrę");
+				do {
+					sign = wprowadz.next().charAt(0);
+					wprowadz.nextLine();
+					//usuwa problem z pomijaniem czytania Stringa ze Scannera ponizej
+				}
+				while (sign != '+' && sign != '-' && sign != '*' && sign != '/');
+				System.out.println("Wprowadź kolejną liczbe");
+				while (!wprowadz.hasNextDouble()){
+					System.out.println("To nie jest cyfra!");
+					wprowadz.next();
+				}
 				y = wprowadz.nextDouble();
 				switch (sign) {
 					case '+':
@@ -42,12 +69,15 @@ public class Main {
 						break;
 				}
 				System.out.println("Jeśli chcesz wykonać kolejne działanie wprowadź TAK");
-				ver = wprowadz.nextLine();
+				wprowadz.nextLine();
+				vr = wprowadz.nextLine();
+				System.out.println("OK!");
 			}
-			while (ver.equals(tak));
+			while (vr.equals(tak));
 			System.out.println("Jeśli chcesz zaczac od poczatku wprowadź TAK");
-			ver = wprowadz.nextLine();
+			vr = wprowadz.nextLine();
+			System.out.println("OK!");
 		}
-		while (ver.equals(tak));
+		while (vr.equals(tak));
 	}
 	}
